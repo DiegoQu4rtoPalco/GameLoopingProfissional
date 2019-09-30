@@ -1,4 +1,12 @@
-1º Commit, criando projeto:
+1 e 2º Commit, criando projeto:
 
 Criação da janela do jogo, extendendo ao Canvas e implementando Runnable, método run
 tamanho editavel multiplicado pela escala, pensando em um jogo em pixel.
+
+
+3º Commit - Executando modo Looping com mensagem em console.
+
+Testando com mensagens no console o modo looping, adicionado Thread, thread é quando se
+á varios processos sendo executado no seu projeto, adicioando algumas variaveis private
+Thread thread, private Booolean isRunning recebendo verdadeiro, isRunning quer dizer se 
+o jogo está sendo executavel se sim ele rodara infinitamente.

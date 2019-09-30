@@ -6,6 +6,9 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 
 public class Looping extends Canvas implements Runnable{
+	
+	private Thread thread;
+	private Boolean isRunning = true;
 
 	private static final long serialVersionUID = 1L;
 	public static JFrame frame;
@@ -16,6 +19,16 @@ public class Looping extends Canvas implements Runnable{
 	public Looping() {
 		this.setPreferredSize(new Dimension(WHIDTH * SCALE, HEIGHT * SCALE));
 		initFrame();
+	}
+	
+	public synchronized void start() {
+		thread = new Thread(this);
+		isRunning = true;
+		thread.start();
+	}
+	
+	public synchronized void stop() {
+		
 	}
 	
 	private void initFrame() {
@@ -29,12 +42,15 @@ public class Looping extends Canvas implements Runnable{
 	}
 
 	public static void main (String [] args) {
-		new Looping();
+		Looping loopping = new Looping();
+		loopping.start();
 	}
 
 	@Override
 	public void run() {
-
+		while(isRunning) {
+			System.out.println("Testando modo looping, jogos está sendo executado");
+		}
 		
 	}
 
