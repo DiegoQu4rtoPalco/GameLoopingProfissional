@@ -16,14 +16,15 @@ public class Looping extends Canvas implements Runnable{
 
 	private static final long serialVersionUID = 1L;
 	public static JFrame frame;
-    private final int WHIDTH = 	160;
-    private final int HEIGHT = 120;
-    private final int SCALE = 3;
+	private final int SCALE = 3;
+    private final int WHIDTH = 	160 * SCALE;
+    private final int HEIGHT = 120 * SCALE;
+    
     
     private BufferedImage imagem;
 	
 	public Looping() {
-		this.setPreferredSize(new Dimension(WHIDTH * SCALE, HEIGHT * SCALE));
+		this.setPreferredSize(new Dimension(WHIDTH, HEIGHT));
 		initFrame();
 		imagem = new BufferedImage(WHIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 	}
@@ -72,8 +73,19 @@ public class Looping extends Canvas implements Runnable{
 		g.setColor(new Color(19, 19, 19));
 		g.fillRect(0, 0, WHIDTH, HEIGHT);
 		g = bs.getDrawGraphics();
-		g.drawImage(imagem, 0, 0, WHIDTH * SCALE, HEIGHT * SCALE, null);
+		g.drawImage(imagem, 0, 0, WHIDTH * SCALE, HEIGHT , null);
+		
+		for(int i = 0; i <= WHIDTH/20; i++) {
+			g.setColor(Color.WHITE);
+			g.drawLine(0, i * 20, HEIGHT * 20, i * 20);
+			for(int f = 0; f <= WHIDTH/20; f++) {
+				g.setColor(Color.WHITE);
+				g.drawLine(i * 20, 0, i * 20, HEIGHT);
+			}
+			
+		}
 		bs.show();
+		
 	}
 	@Override
 	public void run() {

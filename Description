@@ -34,6 +34,10 @@ criando nova variável private BufferedImage imagem, ao construtor imagem e inst
 largura e altura, no método render Graphics g é igual imagem.getGraphics() e g também é igual
 bs.getDrawGraphics(), g.drawImage ao seus parametros pega imagem e suas medidas.
 
-6º Commit - 
+6º Commit - Método stop, erro em Thread.
 Caso nosso thread de um erro vamos chamar método stop, no método run, em método stop isRunning 
 passa a ser false, adicione método thread.join() e aceita exceçoes.
+
+7º Commit - Mostrando grade da tela.
+Dentro do método render vamos adicionar linhas para poder trabalhar com cada quadrado, no caso
+cada quadrado é de 20 pixel.
