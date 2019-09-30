@@ -10,3 +10,15 @@ Testando com mensagens no console o modo looping, adicionado Thread, thread é q
 á varios processos sendo executado no seu projeto, adicioando algumas variaveis private
 Thread thread, private Booolean isRunning recebendo verdadeiro, isRunning quer dizer se 
 o jogo está sendo executavel se sim ele rodara infinitamente.
+
+4º Commit - Editando FPS.
+
+Criando variável long tempo final recebendo nanoTime, double amount.., o valor de 60.0,
+o nosso valor de FPS, double ns recebendo o valor de 1000000000 dividido por amount...
+double delta recebe zero, int frames recebe 0, dobule timer recebe currentTimeMills
+Dentro da função while, long now recebe nanoTime, agora iremos usar a variavel delta,
+delta mais igual (now - lastTime) divido por ns, lastTime igual a now, função if
+se delta for maior ou igual 1, método tick, método render, frames mais mais, delta menos 
+menos, após chaves se System.currentTimeMills meno que timer maior ou igual 1000, mensagem
+no console FPS: + frames, frames igual a zero e timer mais igual 1000. Com isso no console
+sera mostrado em FPS o valor da execução em frames.
