@@ -34,3 +34,6 @@ criando nova variável private BufferedImage imagem, ao construtor imagem e inst
 largura e altura, no método render Graphics g é igual imagem.getGraphics() e g também é igual
 bs.getDrawGraphics(), g.drawImage ao seus parametros pega imagem e suas medidas.
 
+6º Commit - 
+Caso nosso thread de um erro vamos chamar método stop, no método run, em método stop isRunning 
+passa a ser false, adicione método thread.join() e aceita exceçoes.

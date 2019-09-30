@@ -35,7 +35,12 @@ public class Looping extends Canvas implements Runnable{
 	}
 	
 	public synchronized void stop() {
-		
+		isRunning = false;
+		try {
+			thread.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private void initFrame() {
@@ -96,7 +101,7 @@ public class Looping extends Canvas implements Runnable{
 				timer+=1000;
 			}
 		}
-		
+		stop();
 	}
 
 }
