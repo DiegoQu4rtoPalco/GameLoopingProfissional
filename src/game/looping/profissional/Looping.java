@@ -1,7 +1,11 @@
 package game.looping.profissional;
 
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 
 import javax.swing.JFrame;
 
@@ -15,10 +19,13 @@ public class Looping extends Canvas implements Runnable{
     private final int WHIDTH = 	160;
     private final int HEIGHT = 120;
     private final int SCALE = 3;
+    
+    private BufferedImage imagem;
 	
 	public Looping() {
 		this.setPreferredSize(new Dimension(WHIDTH * SCALE, HEIGHT * SCALE));
 		initFrame();
+		imagem = new BufferedImage(WHIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 	}
 	
 	public synchronized void start() {
@@ -51,7 +58,17 @@ public class Looping extends Canvas implements Runnable{
 	}
 
 	public void render() {
-		
+		BufferStrategy bs = this.getBufferStrategy();
+		if(bs == null) {
+			this.createBufferStrategy(3);
+			return;
+		}
+		Graphics g = imagem.getGraphics();
+		g.setColor(new Color(19, 19, 19));
+		g.fillRect(0, 0, WHIDTH, HEIGHT);
+		g = bs.getDrawGraphics();
+		g.drawImage(imagem, 0, 0, WHIDTH * SCALE, HEIGHT * SCALE, null);
+		bs.show();
 	}
 	@Override
 	public void run() {

@@ -22,3 +22,15 @@ se delta for maior ou igual 1, método tick, método render, frames mais mais, d
 menos, após chaves se System.currentTimeMills meno que timer maior ou igual 1000, mensagem
 no console FPS: + frames, frames igual a zero e timer mais igual 1000. Com isso no console
 sera mostrado em FPS o valor da execução em frames.
+
+5º Commit - Trabalhando com renderização e Buffers.
+
+No método render vamos adicionar BufferStrategy, ele otimiza a nossa renderização e é usado 
+por varios jogos uma forma mais profissional de se trablahar com gráficos, Graphics g passa 
+a ser igual a bs.getDrawGraphics. Fazendo teste de demonstração de um retangulo na tela,apenas 
+com funções do própio Graphics setar a cor, g.setColor(new Color(19,19,19), usando rgb, imagem 
+retangulo g.fillRect(0,0,200,200), bs.show(), desenha na tela. Outro tipo usando BufferdImage
+criando nova variável private BufferedImage imagem, ao construtor imagem e instanciada recebendo 
+largura e altura, no método render Graphics g é igual imagem.getGraphics() e g também é igual
+bs.getDrawGraphics(), g.drawImage ao seus parametros pega imagem e suas medidas.
+
