@@ -1,0 +1,4 @@
+1º Commit, criando projeto:
+
+Criação da janela do jogo, extendendo ao Canvas e implementando Runnable, método run
+tamanho editavel multiplicado pela escala, pensando em um jogo em pixel.
