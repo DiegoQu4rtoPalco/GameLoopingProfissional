@@ -41,3 +41,14 @@ passa a ser false, adicione método thread.join() e aceita exceçoes.
 7º Commit - Mostrando grade da tela.
 Dentro do método render vamos adicionar linhas para poder trabalhar com cada quadrado, no caso
 cada quadrado é de 20 pixel.
+
+8º Commit - Trabalhando com imagens.
+Criando uma nova pasta no projeto, pasta nome res, não esqueça de clicar com botão direito em res
+ir em Build Path e user a Sources Fold, para adicionar a pasta ao projeto, pasta que armazenara
+todo tipo de arquivos começando com uma imagem png persongem desenhado em 80 pixels, criando nova
+classe SpreiteSheet e adicionando novo objeto BufferedImage spriteSheet, no construtor paramentros 
+String path, a dentro carregando a classe e a imagem, novo método BufferedImage com seus valores de 
+parametros. Na classe  Looping adicionar objeto private SpriteSheet sprite, instanciar no construtor
+sprite = new SpriteSheet("/spritesheet.png"), criar novo objeto private BufferedImage player, no
+Construtor player fica igual sprite.getSprite(0, 0, 80, 80), no método render g.drawImage(player, 0, 0, null)
+assim a imagem irá aparecer.

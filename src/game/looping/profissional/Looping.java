@@ -16,14 +16,19 @@ public class Looping extends Canvas implements Runnable{
 
 	private static final long serialVersionUID = 1L;
 	public static JFrame frame;
-	private final int SCALE = 3;
+	private final int SCALE = 4;
     private final int WHIDTH = 	160 * SCALE;
     private final int HEIGHT = 120 * SCALE;
     
-    
+    private SpriteSheet sprite;
+    private BufferedImage player;
     private BufferedImage imagem;
+    private int x;
 	
 	public Looping() {
+		x = 0;
+		sprite = new SpriteSheet("/spritesheet.png");
+		player = sprite.getSprite(0, 0, 80, 80);
 		this.setPreferredSize(new Dimension(WHIDTH, HEIGHT));
 		initFrame();
 		imagem = new BufferedImage(WHIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
@@ -60,7 +65,7 @@ public class Looping extends Canvas implements Runnable{
 	}
 	
 	public void tick() {
-		
+		x++;
 	}
 
 	public void render() {
@@ -70,20 +75,21 @@ public class Looping extends Canvas implements Runnable{
 			return;
 		}
 		Graphics g = imagem.getGraphics();
-		g.setColor(new Color(19, 19, 19));
+		g.setColor(new Color(255, 255, 255));
 		g.fillRect(0, 0, WHIDTH, HEIGHT);
 		g = bs.getDrawGraphics();
-		g.drawImage(imagem, 0, 0, WHIDTH * SCALE, HEIGHT , null);
+		g.drawImage(imagem, 0, 0, WHIDTH, HEIGHT , null);
 		
-		for(int i = 0; i <= WHIDTH/20; i++) {
-			g.setColor(Color.WHITE);
-			g.drawLine(0, i * 20, HEIGHT * 20, i * 20);
+		for(int i = 0; i <= WHIDTH/80; i++) {
+			g.setColor(Color.BLACK);
+			g.drawLine(0, i * 80, HEIGHT * 80, i * 80);
 			for(int f = 0; f <= WHIDTH/20; f++) {
-				g.setColor(Color.WHITE);
-				g.drawLine(i * 20, 0, i * 20, HEIGHT);
+				g.setColor(Color.BLACK);
+				g.drawLine(i * 80, 0, i * 80, HEIGHT);
 			}
 			
 		}
+		g.drawImage(player, x, 0, null);
 		bs.show();
 		
 	}
