@@ -4,6 +4,7 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
@@ -66,6 +67,9 @@ public class Looping extends Canvas implements Runnable{
 	
 	public void tick() {
 		x++;
+		if(x >= 480) {
+			x = 0;
+		}
 	}
 
 	public void render() {
@@ -89,7 +93,11 @@ public class Looping extends Canvas implements Runnable{
 			}
 			
 		}
-		g.drawImage(player, x, 0, null);
+		Graphics2D g2 = (Graphics2D) g;
+		g2.setColor(new Color(0, 0, 0, 100));
+		g2.fillRect(0, 0, WHIDTH, HEIGHT);
+		g2.rotate(Math.toRadians(45), 90, 90);
+		g2.drawImage(player, x, 0, null);
 		bs.show();
 		
 	}
