@@ -22,14 +22,21 @@ public class Looping extends Canvas implements Runnable{
     private final int HEIGHT = 120 * SCALE;
     
     private SpriteSheet sprite;
-    private BufferedImage player;
+    private BufferedImage player[];
     private BufferedImage imagem;
     private int x;
+    private int frames = 0;
+    private int maxFrames = 20;
+    private int curAnimation = 0;
+    private int maxAnimation = 3;
 	
 	public Looping() {
 		x = 0;
 		sprite = new SpriteSheet("/spritesheet.png");
-		player = sprite.getSprite(0, 0, 80, 80);
+		player = new BufferedImage[3];
+		player[0] = sprite.getSprite(0, 0, 80, 80);
+		player[1] = sprite.getSprite(80, 0, 80, 80);
+		player[2] = sprite.getSprite(160, 0, 80, 80);
 		this.setPreferredSize(new Dimension(WHIDTH, HEIGHT));
 		initFrame();
 		imagem = new BufferedImage(WHIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
@@ -70,6 +77,14 @@ public class Looping extends Canvas implements Runnable{
 		if(x >= 480) {
 			x = 0;
 		}
+		frames++;
+		if(frames >= maxFrames) {
+			frames = 0;
+			curAnimation++;
+			if(curAnimation >= maxAnimation) {
+				curAnimation = 0;
+			}
+		}
 	}
 
 	public void render() {
@@ -97,7 +112,7 @@ public class Looping extends Canvas implements Runnable{
 		g2.setColor(new Color(0, 0, 0, 100));
 		g2.fillRect(0, 0, WHIDTH, HEIGHT);
 		g2.rotate(Math.toRadians(45), 90, 90);
-		g2.drawImage(player, x, 0, null);
+		g2.drawImage(player[curAnimation], x, 0, null);
 		bs.show();
 		
 	}

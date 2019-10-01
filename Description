@@ -56,3 +56,12 @@ assim a imagem irá aparecer.
 9º Commit - Rotacioando imagem, deixando fundo mais escuro.
 Para trabalhar com rotação vamos usar Graphics2D, mais potente que o Graphics g, vamos fazer o casting em g
 importe as bibliotecas e depois g2.rotate(Math.toRadians(90), 90, 90).
+
+10º Animação do personagem em vetor.
+BufferedImage player passa a ser um vetor de imagens, no construtor player instanciado com BufferdImage com 3
+imagens do seus parametros, agora colocar as imagens em seu tamanho e posições exemplo da primeira imagem
+player[0] = sprite.getSprite(0,0,80,80), novas variáveis para a lógica do movimento do jogador, private int
+frames = 0; maxFrames = 20; curAnimation = 0; maxAnimation = 3;. No método tickt função frames++; se frames
+for maior ou igual a maxFrames dentro chaves frames recebe 0, curAnimation++; e se curAnimation for maior ou 
+igual maxAnimation, dentro das chaves curAnimation igual a zero. no método render, em drawImage o objeto player
+fica com o paramtro do vetor[curAnimation].
